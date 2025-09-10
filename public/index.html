@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Family Tree Builder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Fonts (optional) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Your extracted CSS -->
+    <link rel="stylesheet" href="/styles/globals.css" />
+    <link rel="stylesheet" href="/styles/modal.css" />
+  </head>
+  <body class="fonts-loaded">
+    <!-- Keep only the DOM they actually use -->
+    <div class="cache-indicator" id="cacheIndicator">
+      <div class="cache-save-indicator" id="saveIndicator">Last saved: —</div>
+      <div class="cache-expanded-content">
+        <input type="text" class="tree-name-input" id="treeNameInput" placeholder="Enter tree name..." value="My Family Tree" />
+        <div class="tree-stats">
+          <div>👥 <span id="personCount">0</span> people</div>
+          <div>🔗 <span id="connectionCount">0</span> connections</div>
+          <div>💾 Auto-save: <span id="autoSaveStatus">enabled</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="settingsPanel" class="panel hidden"></div>
+    <div id="notificationsContainer" class="notifications-container"></div>
+
+    <div id="mainContainer">
+      <div id="graphicView"><canvas></canvas></div>
+      <div id="tableView" class="hidden">
+        <div id="tableControls">
+          <input type="text" id="searchInput" placeholder="Search..." />
+          <select id="sortSelect">
+            <option value="name">Name</option>
+            <option value="fatherName">Father's Name</option>
+            <option value="surname">Surname</option>
+            <option value="dob">Date of Birth</option>
+            <option value="gender">Gender</option>
+          </select>
+        </div>
+        <table id="familyTable">
+          <thead>
+            <tr>
+              <th>Name</th><th>Father's Name</th><th>Surname</th><th>Maiden Name</th><th>Date of Birth</th><th>Gender</th><th>Mother</th><th>Father</th><th>Spouse</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="familyTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="zoom-controls">
+      <button id="zoomOutControl" class="zoom-btn" title="Zoom Out">-</button>
+      <div class="zoom-display" id="zoomDisplay">100%</div>
+      <button id="zoomInControl" class="zoom-btn" title="Zoom In">+</button>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
